@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+ 
+	<script type="text/javascript" >
+
+
+//参数打印快慢
+;(function($){
+$.fn.show= function(speed) {
+		
+		
+			var $th = this, str = $th.html(), textindex = 0;
+			$th.html('');
+			var cycle = setInterval(function() {
+				var current = str.substr(textindex, 1);
+				if (current == '<') {
+					textindex = str.indexOf('>', textindex) + 1;
+				} else {
+					textindex++;
+				}
+				$th.html(str.substring(0, textindex) + (textindex%2==0? '_' : ''));
+				if (textindex >= str.length) {
+					clearInterval(cycle);
+				}
+			}, speed);
+	
+		return this;
+	};
+})(jQuery);
+
+
+	$(function(){
+      
+	$("#sp").show(500);
+
+	})
+	</script>  
+</head>
+<body>
+    <div>
+    	  <span id=sp style="color: red">人生不应该是一场疯狂的对欲望的追求和养尊处优的旅程，<br/>而且防止堕落揭开伤疤，毫不留情的磨损皮肤，最后尖叫，多么坚固的身体（灵魂）啊！</span>
+
+    </div>
+    
+
+</body>
+</html>
